@@ -9,13 +9,19 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7  # 7 days for demo
     
     # SQLite by default for zero-config portable local dev, or PostgreSQL when DATABASE_URL is set
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///./medreach.db")
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        "sqlite:////tmp/medreach.db" if os.getenv("VERCEL") else "sqlite:///./medreach.db"
+    )
     
     # AI OCR Provider mode (DEMO / TESSERACT / VISION)
     AI_OCR_PROVIDER: str = os.getenv("AI_OCR_PROVIDER", "DEMO")
     
     # Upload storage directory
-    UPLOAD_DIR: str = os.getenv("UPLOAD_DIR", "./uploads/prescriptions")
+    UPLOAD_DIR: str = os.getenv(
+        "UPLOAD_DIR",
+        "/tmp/uploads/prescriptions" if os.getenv("VERCEL") else "./uploads/prescriptions"
+    )
 
     class Config:
         case_sensitive = True
