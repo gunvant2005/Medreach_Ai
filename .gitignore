@@ -54,3 +54,5 @@ frontend/uploads/
 .DS_Store
 Thumbs.db
 *.log
+
+.vercel
