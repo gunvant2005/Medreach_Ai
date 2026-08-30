@@ -18,14 +18,17 @@ from app.routers import (
     analytics
 )
 
-# Initialize database schema tables on startup
-Base.metadata.create_all(bind=engine)
+def init_db():
+    try:
+        Base.metadata.create_all(bind=engine)
+        with Session(bind=engine) as db_session:
+            from app.models import User
+            if db_session.query(User).count() == 0:
+                seed_database(db_session)
+    except Exception as err:
+        print("Database initialization note:", err)
 
-# Auto-seed if database is empty on first boot
-with Session(bind=engine) as db_session:
-    from app.models import User
-    if db_session.query(User).count() == 0:
-        seed_database(db_session)
+init_db()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -46,7 +49,9 @@ app.add_middleware(
 
 # Static file serving for uploaded prescription images
 os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
-app.mount("/uploads", StaticFiles(directory="./uploads"), name="uploads")
+if os.path.exists(settings.UPLOAD_DIR):
+    app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
+
 
 # Include Routers
 app.include_router(auth.router, prefix=settings.API_V1_STR)
