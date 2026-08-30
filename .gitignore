@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js Build & Cache
+.next/
+out/
+build/
+dist/
+
+# Python Virtual Environments & Caches
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.development.local
+.env.production.local
+.env*.local
+*.pem
+*.key
+*.secret
+
+# SQLite Databases & Backups
+*.db
+*.sqlite
+*.sqlite3
+backend/medreach.db
+backend/test_medreach.db
+backend/backups/
+backups/
+
+# User Uploaded Prescriptions & Media
+uploads/
+backend/uploads/
+frontend/uploads/
+
+# IDE & OS Junk
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+*.log

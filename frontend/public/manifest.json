@@ -1,0 +1,24 @@
+{
+  "name": "MedReach AI — Emergency Medicine & Pharmacy Network",
+  "short_name": "MedReach AI",
+  "description": "Intelligent Medicine Availability, AI Prescription Scanner, and 24/7 Pharmacy Network.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050a18",
+  "theme_color": "#06d6a0",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

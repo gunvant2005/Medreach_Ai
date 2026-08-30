@@ -1,0 +1,12 @@
+{
+  "name": "medreach-ai-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix frontend start",
+    "backend": "cd backend && .venv\\Scripts\\uvicorn app.main:app --reload --port 8000",
+    "test": "cd backend && .venv\\Scripts\\pytest tests"
+  }
+}
